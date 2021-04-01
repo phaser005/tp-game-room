@@ -20,6 +20,15 @@ import { RegisterComponent } from './pages/register/register.component';
 import { WhoAmIComponent } from './pages/who-am-i/who-am-i.component';
 import { environment } from 'src/environments/environment';
 
+const config = {
+  apiKey: "AIzaSyC9zXi3pcaonrm5bqDFLoyMilfrv0Gsups",
+  authDomain: "tp-game-room-app.firebaseapp.com",
+  projectId: "tp-game-room-app",
+  storageBucket: "tp-game-room-app.appspot.com",
+  messagingSenderId: "981476937795",
+  appId: "1:981476937795:web:34ae5e135bd220e31944f6"
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +41,7 @@ import { environment } from 'src/environments/environment';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    AngularFireModule.initializeApp(environment.firebase), //INITIALIZER
+    AngularFireModule.initializeApp(config), //INITIALIZER
     AngularFirestoreModule, //FIRESTORE
     AngularFireStorageModule, //STORAGE
     AngularFireAuthModule //AUTH

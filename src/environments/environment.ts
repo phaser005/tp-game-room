@@ -3,15 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  firebase: {
-    apiKey: "AIzaSyC9zXi3pcaonrm5bqDFLoyMilfrv0Gsups",
-    authDomain: "tp-game-room-app.firebaseapp.com",
-    projectId: "tp-game-room-app",
-    storageBucket: "tp-game-room-app.appspot.com",
-    messagingSenderId: "981476937795",
-    appId: "1:981476937795:web:34ae5e135bd220e31944f6"
-  }
+  production: false
 };
 
 /*
