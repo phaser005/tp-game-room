@@ -1,1 +1,22 @@
-<p>login works!</p>
+<div class="container">
+    <div class="row justify-content center p-4">
+
+        <div class="col md-6">
+            <form (ngSubmit)="login()">
+                <h3>Yukkuri System - Login</h3>
+                <div class="form-group p-2">
+                    <input type="email" name="email" class="form-control" [(ngModel)]="email" placeholder="Enter Email" required>
+                </div>
+
+                <div class="form-group p-2">
+                    <input type="password" name="password" class="form-control" [(ngModel)]="password" placeholder="Enter Password" required>
+                </div>
+
+                <div class="form-group p-2">
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
