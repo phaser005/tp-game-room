@@ -18,7 +18,6 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { WhoAmIComponent } from './pages/who-am-i/who-am-i.component';
-import { environment } from 'src/environments/environment';
 
 const config = {
   apiKey: "AIzaSyC9zXi3pcaonrm5bqDFLoyMilfrv0Gsups",
@@ -41,7 +40,7 @@ const config = {
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    AngularFireModule.initializeApp(config), //INITIALIZER
+    AngularFireModule.initializeApp(config),
     AngularFirestoreModule, //FIRESTORE
     AngularFireStorageModule, //STORAGE
     AngularFireAuthModule //AUTH
