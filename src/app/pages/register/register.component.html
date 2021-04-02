@@ -20,14 +20,18 @@
                 </div>
                 <div class="validations" *ngIf="form.touched">
                     <span>
-                        <i class="bi bi-check-circle-fill" *ngIf="form.controls.name.valid"></i>
-                        <i class="bi bi-x-circle" *ngIf="form.controls.name.invalid"></i>
+                        <i class="bi bi-check-circle-fill" *ngIf="form.controls.email.valid"></i>
+                        <i class="bi bi-x-circle" *ngIf="form.controls.email.invalid"></i>
                         Email should be of the format "example@something.something"
-                            <br>
+                        <br>
+                        <i class="bi bi-check-circle-fill" *ngIf="form.controls.password.valid"></i>
+                        <i class="bi bi-x-circle" *ngIf="form.controls.password.invalid"></i>
+                        Password should have more than 6 characters
+                        <br>
                         <i class="bi bi-check-circle-fill" *ngIf="form.controls.confirmPass.valid"></i>
                         <i class="bi bi-x-circle" *ngIf="form.controls.confirmPass.invalid"></i>
                         Password matches
-                            <br>
+                        <br>
                         <i class="bi bi-check-circle-fill" *ngIf="form.controls.name.valid"></i>
                         <i class="bi bi-x-circle" *ngIf="form.controls.name.invalid"></i>
                         Username should be at least 4 characters long

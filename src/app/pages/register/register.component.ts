@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CustomValidatorService, passwordMatchValidator } from '../../services/custom-validator.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { passwordMatchValidator } from '../../services/custom-validator.service';
 
 @Component({
   selector: 'app-register',
@@ -9,16 +10,13 @@ import { CustomValidatorService, passwordMatchValidator } from '../../services/c
 })
 export class RegisterComponent implements OnInit {
 
-
-  errorMessage = "" ; // validation error handle
-  error: { name: string, message: string } = { name: '', message: '' }; //Firebase error handling
-  
   form: FormGroup;
-  constructor(private fb:FormBuilder) {
+  constructor(private fb:FormBuilder,
+              private auth: AuthService) {
     this.form = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(4)]],
-      email: '',
-      password: '',
+      email: ['', [Validators.compose([Validators.required, Validators.email])]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPass: ['', passwordMatchValidator]
     });
 
@@ -35,6 +33,12 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(){
     this.form.markAsTouched();
-    console.log(this.form.value);
+    if(this.form.valid){
+      console.log("ALL OK!");
+      console.log(this.form.get('email')?.value, this.form.get('password')?.value);
+      this.auth.Register(this.form.get('email')?.value,this.form.get('password')?.value);
+    }else{
+      alert("THERE'S SOME ERRORS!");
+    }
   }
 }
