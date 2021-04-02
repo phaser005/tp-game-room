@@ -20,7 +20,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { WhoAmIComponent } from './pages/who-am-i/who-am-i.component';
 
 const config = {
-  apiKey: "AIzaSyC9zXi3pcaonrm5bqDFLoyMilfrv0Gsups",
+  apiKey: "",
   authDomain: "tp-game-room-app.firebaseapp.com",
   projectId: "tp-game-room-app",
   storageBucket: "tp-game-room-app.appspot.com",
