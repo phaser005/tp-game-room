@@ -9,13 +9,16 @@ import { Router } from '@angular/router'; //For redirecting users
   providedIn: 'root'
 })
 export class AuthService {
-  collectionRoute = '/users';
+  collectionRoute= "/users";
   collectionReference: AngularFirestoreCollection<UserData>;
+  newUser: UserData;
 
   constructor(private db:AngularFirestore, 
-              private ngFireAuth:AngularFireAuth,
+              private auth:AngularFireAuth,
               private router: Router) {
     this.collectionReference = db.collection(this.collectionRoute);
+    this.newUser = new UserData();
+
    }
 
    async LogMeIn(email: string, password: string) {
@@ -30,7 +33,7 @@ export class AuthService {
         alert('Email Field is empty');
       }else{
         try {
-          const user = await this.ngFireAuth.signInWithEmailAndPassword(email, password);
+          const user = await this.auth.signInWithEmailAndPassword(email, password);
     
           if(email){
             this.router.navigate(['/home']);
@@ -45,12 +48,22 @@ export class AuthService {
 
   }
 
-  async Register(email:string, password:string){
+  async Register(email:string, password:string, name:string){
     try{
-      const user = await this.ngFireAuth.createUserWithEmailAndPassword(email, password);
-
+      const user = await this.auth.createUserWithEmailAndPassword(email, password);
       if(email){
-        alert('Registration Successful!')
+        if(user.user?.uid){
+
+          this.newUser.uid = user.user.uid;
+          this.newUser.email = email;
+          this.newUser.displayName = name;
+          
+          this.addUserToFireStoreDatabase(this.newUser).then(()=>[
+            console.log("User Registered")
+          ]);
+          alert('Registration Successful!');
+        }
+        
         this.router.navigate(['/home']);
       } else {
         throw new Error;
@@ -58,8 +71,15 @@ export class AuthService {
     } catch (e) {
       alert(e.message);
     }
+    
 
+    
+  }
 
+  addUserToFireStoreDatabase(user: UserData):any{
+    return this.collectionReference.add({...user});
+    
+  }
+  //user.user?.uid
 
-  }  
 }

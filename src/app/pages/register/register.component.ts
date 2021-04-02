@@ -36,7 +36,7 @@ export class RegisterComponent implements OnInit {
     if(this.form.valid){
       console.log("ALL OK!");
       console.log(this.form.get('email')?.value, this.form.get('password')?.value);
-      this.auth.Register(this.form.get('email')?.value,this.form.get('password')?.value);
+      this.auth.Register(this.form.get('email')?.value,this.form.get('password')?.value, this.form.get('name')?.value);
     }else{
       alert("THERE'S SOME ERRORS!");
     }

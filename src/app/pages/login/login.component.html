@@ -2,18 +2,18 @@
     <div class="row justify-content center p-4">
 
         <div class="col md-6">
-            <form (ngSubmit)="login()">
+            <form [formGroup]="form">
                 <h3>Yukkuri System - Login</h3>
                 <div class="form-group p-2">
-                    <input type="email" name="email" class="form-control" [(ngModel)]="email" placeholder="Enter Email" required>
+                    <input type="email" name="email" class="form-control" formControlName="email" placeholder="Enter Email" required>
                 </div>
 
                 <div class="form-group p-2">
-                    <input type="password" name="password" class="form-control" [(ngModel)]="password" placeholder="Enter Password" required>
+                    <input type="password" name="password" class="form-control" formControlName="password" placeholder="Enter Password" required>
                 </div>
 
                 <div class="form-group p-2">
-                    <button type="submit" class="btn btn-primary">Login</button>
+                    <button type="submit" class="btn btn-primary" (click)="LogMeIn()">Login</button>
                 </div>
             </form>
         </div>
