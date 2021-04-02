@@ -11,7 +11,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
 //FORM IMPORTS//
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 //CUSTOM COMPONENTS IMPORTS//
 import { HomeComponent } from './pages/home/home.component';
@@ -40,6 +40,7 @@ const config = {
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     AngularFireModule.initializeApp(config),
     AngularFirestoreModule, //FIRESTORE
     AngularFireStorageModule, //STORAGE

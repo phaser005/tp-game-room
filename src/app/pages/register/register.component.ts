@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CustomValidatorService, passwordMatchValidator } from '../../services/custom-validator.service';
 
 @Component({
   selector: 'app-register',
@@ -7,17 +9,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
-  email = "" ;
-  password = "" ;
+
   errorMessage = "" ; // validation error handle
   error: { name: string, message: string } = { name: '', message: '' }; //Firebase error handling
   
-  constructor() { }
+  form: FormGroup;
+  constructor(private fb:FormBuilder) {
+    this.form = this.fb.group({
+      name: ['', [Validators.required, Validators.minLength(4)]],
+      email: '',
+      password: '',
+      confirmPass: ['', passwordMatchValidator]
+    });
+
+      //Observable password//
+    this.form.controls.password.valueChanges.subscribe(
+      x => this.form.controls.confirmPass.updateValueAndValidity()
+    )
+  
+  }
+
 
   ngOnInit(): void {
   }
 
-  register(){
-    alert("Register works!");
+  onSubmit(){
+    this.form.markAsTouched();
+    console.log(this.form.value);
   }
 }
