@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { UserData } from '../clases/user-data';
+import { AngularNotifierService } from '../services/angular-notifier.service';
 import { Router } from '@angular/router'; //For redirecting users
 
 
@@ -15,6 +16,7 @@ export class AuthService {
 
   constructor(private db:AngularFirestore, 
               private auth:AngularFireAuth,
+              private notification: AngularNotifierService,
               private router: Router) {
     this.collectionReference = db.collection(this.collectionRoute);
     this.newUser = new UserData();
@@ -25,12 +27,12 @@ export class AuthService {
     //code for logging in the app goes here!
     if(email == "" && password == "")
     {
-      alert('Email and password are empty');
+      this.notification.showNotification('error','Email and password are empty');
     }else if(password == ""){
-        alert('Password field is empty');
+      this.notification.showNotification('error','Password field is empty');
       }else if(email == "")
       {
-        alert('Email Field is empty');
+        this.notification.showNotification('error','Email Field is empty');
       }else{
         try {
           const user = await this.auth.signInWithEmailAndPassword(email, password);
@@ -41,7 +43,7 @@ export class AuthService {
             throw new Error;
           }
         }catch (e) {
-          alert(e.message);
+          this.notification.showNotification('error', e.message);
         }
       }
     
@@ -61,7 +63,7 @@ export class AuthService {
           this.addUserToFireStoreDatabase(this.newUser).then(()=>[
             console.log("User Registered")
           ]);
-          alert('Registration Successful!');
+          this.notification.showNotification('success','Registration Successful!');
         }
         
         this.router.navigate(['/home']);
@@ -69,7 +71,7 @@ export class AuthService {
         throw new Error;
       }
     } catch (e) {
-      alert(e.message);
+      this.notification.showNotification('error',e.message);
     }
     
 
@@ -78,8 +80,10 @@ export class AuthService {
 
   addUserToFireStoreDatabase(user: UserData):any{
     return this.collectionReference.add({...user});
-    
+ 
   }
+
+  
   //user.user?.uid
 
 }

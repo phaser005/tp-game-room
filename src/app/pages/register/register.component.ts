@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { passwordMatchValidator } from '../../services/custom-validator.service';
+import { AngularNotifierService } from '../../services/angular-notifier.service';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +13,8 @@ export class RegisterComponent implements OnInit {
 
   form: FormGroup;
   constructor(private fb:FormBuilder,
-              private auth: AuthService) {
+              private auth: AuthService,
+              private notification: AngularNotifierService) {
     this.form = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(4)]],
       email: ['', [Validators.compose([Validators.required, Validators.email])]],
@@ -36,9 +38,10 @@ export class RegisterComponent implements OnInit {
     if(this.form.valid){
       console.log("ALL OK!");
       console.log(this.form.get('email')?.value, this.form.get('password')?.value);
+      
       this.auth.Register(this.form.get('email')?.value,this.form.get('password')?.value, this.form.get('name')?.value);
     }else{
-      alert("THERE'S SOME ERRORS!");
+      this.notification.showNotification('error', 'Something happened');
     }
   }
 }

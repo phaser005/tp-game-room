@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
-import { RegisterComponent } from '../register/register.component'
+import { AngularNotifierService } from '../../services/angular-notifier.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +13,8 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
 
   constructor(private fb:FormBuilder,
-              private auth: AuthService){
+              private auth: AuthService,
+              private notification: AngularNotifierService){
     this.form = this.fb.group({
       email: '',
       password: ''
@@ -25,10 +26,24 @@ export class LoginComponent implements OnInit {
   }
 
   async LogMeIn() {
-    if(this.form.valid){
+    if(this.form.valid && (this.form.get('email')?.value !== '' && this.form.get('password')?.value !== '')){
+      
       this.auth.LogMeIn(this.form.get('email')?.value,  this.form.get('password')?.value);
+
+    }else if(this.form.get('email')?.value !== '' && this.form.get('password')?.value === ''){
+      
+      this.notification.showNotification('error', 'You entered no password');
+
+    }else if(this.form.get('email')?.value === '' && this.form.get('password')?.value !== ''){
+      
+      this.notification.showNotification('error', 'You entered no email');
+
+    }else if(this.form.get('email')?.value === '' && this.form.get('password')?.value === ''){
+      
+      this.notification.showNotification('error', 'You entered nothing at all!');
     }else{
-      alert("THERE'S SOME ERRORS!");
+
+      this.notification.showNotification('error', 'Email is badly formatted');
     }
   }
 }

@@ -19,6 +19,9 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { WhoAmIComponent } from './pages/who-am-i/who-am-i.component';
 
+//NOTIFICATIONS//
+import { NotifierModule, NotifierOptions } from 'angular-notifier';
+
 const config = {
   apiKey: "AIzaSyC9zXi3pcaonrm5bqDFLoyMilfrv0Gsups",
   authDomain: "tp-game-room-app.firebaseapp.com",
@@ -27,6 +30,47 @@ const config = {
   messagingSenderId: "981476937795",
   appId: "1:981476937795:web:34ae5e135bd220e31944f6"
 }
+
+const notifierDefaultOptions: NotifierOptions = {
+  position: {
+    horizontal: {
+      position: 'left',
+      distance: 12,
+    },
+    vertical: {
+      position: 'bottom',
+      distance: 12,
+      gap: 10,
+    },
+  },
+  theme: 'material',
+  behaviour: {
+    autoHide: 3000,
+    onClick: false,
+    onMouseover: 'pauseAutoHide',
+    showDismissButton: true,
+    stacking: 4,
+  },
+  animations: {
+    enabled: true,
+    show: {
+      preset: 'slide',
+      speed: 300,
+      easing: 'ease',
+    },
+    hide: {
+      preset: 'fade',
+      speed: 300,
+      easing: 'ease',
+      offset: 50,
+    },
+    shift: {
+      speed: 300,
+      easing: 'ease',
+    },
+    overlap: 150,
+  },
+};
 
 @NgModule({
   declarations: [
@@ -44,7 +88,8 @@ const config = {
     AngularFireModule.initializeApp(config),
     AngularFirestoreModule, //FIRESTORE
     AngularFireStorageModule, //STORAGE
-    AngularFireAuthModule //AUTH
+    AngularFireAuthModule, //AUTH
+    NotifierModule.withConfig(notifierDefaultOptions)
   ],
   providers: [],
   bootstrap: [AppComponent]
