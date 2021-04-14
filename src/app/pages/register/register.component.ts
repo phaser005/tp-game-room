@@ -41,7 +41,7 @@ export class RegisterComponent implements OnInit {
       
       this.auth.Register(this.form.get('email')?.value,this.form.get('password')?.value, this.form.get('name')?.value);
     }else{
-      this.notification.showNotification('error', 'Something happened');
+      this.notification.showNotification('error', 'You forgot to complete some fields');
     }
   }
 }

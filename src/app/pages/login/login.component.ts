@@ -46,4 +46,10 @@ export class LoginComponent implements OnInit {
       this.notification.showNotification('error', 'Email is badly formatted');
     }
   }
+
+  AutoCompleteValidUser(){
+    this.form.get('email')?.setValue('reimu@gmail.com');
+    this.form.get('password')?.setValue('123123');
+    this.LogMeIn();
+  }
 }

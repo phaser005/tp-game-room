@@ -59,6 +59,7 @@ export class AuthService {
           this.newUser.uid = user.user.uid;
           this.newUser.email = email;
           this.newUser.displayName = name;
+          this.newUser.loginDate = this.GetCurrentDate();
           
           this.addUserToFireStoreDatabase(this.newUser).then(()=>[
             console.log("User Registered")
@@ -80,9 +81,13 @@ export class AuthService {
 
   addUserToFireStoreDatabase(user: UserData):any{
     return this.collectionReference.add({...user});
- 
+
   }
 
+  GetCurrentDate():Date{
+    var date = new Date();
+    return date;
+  }
   
   //user.user?.uid
 
