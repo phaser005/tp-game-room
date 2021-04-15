@@ -4,3 +4,8 @@ export class UserData {
     displayName: string = "";
     loginDate: Date = new Date();
 }
+
+export class LoginDataLogs{
+    uid: string = "";
+    loginDate: Date = new Date();
+}

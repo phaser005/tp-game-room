@@ -14,13 +14,17 @@
         <li class="nav-item">
           <a class="nav-link active" href="/who-am-i">About me</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="/games" tabindex="-1" aria-disabled="true">Games</a>
+        <li class="nav-item" *ngIf="LogInVerification('isLoggedIn')">
+          <a class="nav-link active" href="/games/tic-tac-toe" tabindex="-1" aria-disabled="true">Games</a>
         </li>
       </ul>
-      <form class="d-flex">
+      <form class="d-flex" *ngIf="LogInVerification('isLoggedIn') === false">
         <a class="btn btn-outline-primary me-2" routerLink='/entry/login' role="button">Login</a>
         <a class="btn btn-outline-secondary" routerLink="/entry/register" role="button">Register</a>
+      </form>
+      <form class="d-flex" *ngIf="LogInVerification('isLoggedIn')">
+        <a class="btn btn-outline-secondary" routerLink="/entry/user-profile" role="button">My Profile</a>
+        <a class="btn btn-outline-primary me-2" (click)="LogOut()" role="button">Log Out</a>
       </form>
     </div>
   </div>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'tpGameRoom';
+  constructor(private auth: AuthService){
+  }
+
+  LogInVerification(cookie:string):boolean{
+    return this.auth.SearchLogInCookie(cookie);
+  }
+
+  LogOut(){
+    this.auth.LogOut();
+  }
 }
