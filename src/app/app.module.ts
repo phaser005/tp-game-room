@@ -23,6 +23,7 @@ import { WhoAmIComponent } from './pages/who-am-i/who-am-i.component';
 import { NotifierModule, NotifierOptions } from 'angular-notifier';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { TicTacToeComponent } from './games/tic-tac-toe/tic-tac-toe.component';
+import { RockPaperScissorsComponent } from './games/rock-paper-scissors/rock-paper-scissors.component';
 
 const config = {
   apiKey: "AIzaSyC9zXi3pcaonrm5bqDFLoyMilfrv0Gsups",
@@ -82,7 +83,8 @@ const notifierDefaultOptions: NotifierOptions = {
     RegisterComponent,
     WhoAmIComponent,
     UserProfileComponent,
-    TicTacToeComponent
+    TicTacToeComponent,
+    RockPaperScissorsComponent
   ],
   imports: [
     BrowserModule,
