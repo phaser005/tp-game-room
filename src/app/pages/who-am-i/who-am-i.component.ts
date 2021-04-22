@@ -15,7 +15,9 @@ export class WhoAmIComponent implements OnInit {
   }
 
   UserInfo(){
-    this.auth.GetCurrentUser();
+    this.auth.GetCurrentUserName(this.auth.GetUserId()).then((res:any)=>{
+      console.log(res)
+    })
   }
 
 }

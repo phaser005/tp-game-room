@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-tic-tac-toe',
@@ -7,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TicTacToeComponent implements OnInit {
 
-  constructor() { }
+    @Input() gamePath: string = "/chat"
+    constructor() {}
 
   ngOnInit(): void {
     let cell11: HTMLElement = <HTMLElement>document.getElementById("cell11");

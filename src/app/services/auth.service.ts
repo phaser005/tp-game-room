@@ -10,6 +10,7 @@ import { Router } from '@angular/router'; //For redirecting users
   providedIn: 'root'
 })
 export class AuthService {
+
   collectionRoute= "/users";
   collectionReference: AngularFirestoreCollection<UserData>;
   newUser: UserData;
@@ -100,15 +101,26 @@ export class AuthService {
     
   }
 
-  GetCurrentUser(){
-    this.auth.onAuthStateChanged(function(user) {
-      if (user) {
-        console.log(user.uid);
-      } else {
-        console.log("No one is singed in");
-      }
-    });
+  GetUserId():string{
+    var value = "; " + document.cookie;
+    var parts = value.split("; " + 'isLoggedIn' + "=");
+    return parts[1];
   }
+
+  GetCurrentUserName(uid:string){
+    var name!: string;
+    return new Promise((resolve, rejected)=>{
+      this.collectionReference.get().toPromise().then(function (querySnapshot){
+        querySnapshot.forEach(function (doc){
+          //console.log(doc.id, " => ", doc.data());
+          if(doc.data().uid === uid){
+            resolve(doc.data().displayName);
+          }
+        })
+      })
+    })
+  }
+
 
   addUserToFireStoreDatabase(user: UserData):any{
     return this.collectionReference.add({...user});
@@ -157,6 +169,9 @@ export class AuthService {
     return "";
   }
 
+  sleep(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
   //user.user?.uid
 
 }

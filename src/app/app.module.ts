@@ -24,6 +24,8 @@ import { NotifierModule, NotifierOptions } from 'angular-notifier';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { TicTacToeComponent } from './games/tic-tac-toe/tic-tac-toe.component';
 import { RockPaperScissorsComponent } from './games/rock-paper-scissors/rock-paper-scissors.component';
+import { ChatComponent } from './components/chat/chat.component';
+import { ChatLogsComponent } from './components/chat-logs/chat-logs.component';
 
 const config = {
   apiKey: "AIzaSyC9zXi3pcaonrm5bqDFLoyMilfrv0Gsups",
@@ -84,7 +86,9 @@ const notifierDefaultOptions: NotifierOptions = {
     WhoAmIComponent,
     UserProfileComponent,
     TicTacToeComponent,
-    RockPaperScissorsComponent
+    RockPaperScissorsComponent,
+    ChatComponent,
+    ChatLogsComponent
   ],
   imports: [
     BrowserModule,

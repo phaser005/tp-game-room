@@ -1,0 +1,9 @@
+<div class="scroll" align="center">
+    <div *ngFor="let logs of chatLogs | async">
+        <div class="container">
+            <span class="right">{{logs.usuario}}: {{logs.mensaje}}</span>
+            <br>
+            <span class="time-left">{{logs.fecha}}</span>
+        </div>
+    </div>
+</div>
