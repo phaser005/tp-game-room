@@ -1,0 +1,21 @@
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+h1.gameTitle{
+    padding-top: 10px;
+}
+
+.gameView{
+    background-color: #f2eff4
+}
+
+.gameButtons{
+    cursor: pointer;
+    padding: 5px;
+}
+

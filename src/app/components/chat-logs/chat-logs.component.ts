@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FirebaseChatService } from '../../services/firebase-chat.service';
-import { Observable } from 'rxjs';
+import { Message } from '../../clases/message';
+import { RealTimeDataBaseService } from '../../services/real-time-data-base.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-chat-logs',
@@ -9,14 +10,26 @@ import { Observable } from 'rxjs';
 })
 export class ChatLogsComponent implements OnInit {
 
-  //@Input() route!: string;
-  chatLogs: Observable <any[]>;
-  
-  constructor(firestore: FirebaseChatService) {
-    this.chatLogs = firestore.getAll('/chat').valueChanges();
-  }
+  listadoMensajes?: any[];
+  mensajeActual?: Message;
+  currentIndex = -1;
+  title = '';
+  constructor(private servicioRealTime:RealTimeDataBaseService) { }
+
   ngOnInit(): void {
-    //console.log(this.route);
+    this.cargarMensajes();
+  }
+
+  cargarMensajes(): void {
+    this.servicioRealTime.getAll().snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ({ key: c.payload.key, ...c.payload.val() })
+        )
+      )
+    ).subscribe(data => {
+      this.listadoMensajes = data;
+    });
   }
 
 }

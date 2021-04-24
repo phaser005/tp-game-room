@@ -1,1 +1,29 @@
-<p>rock-paper-scissors works!</p>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+<div class="gameView">
+    <div align="center" md-col-12>
+        <h1 class="gameTitle">ROCK - PAPER - SCISSORS</h1>
+        <img src="../../../assets/game assets/nichijou.gif" width="300px">
+            <p>Select either rock, paper, or scissors and see if you can beat the computer!</p>
+
+            <p><strong>Remember:</strong> “Rock breaks scissors, scissors cuts paper, paper covers rock.” </p>
+            <div class='score'>
+
+            </div>
+                <div class='message'>
+            </div>
+
+            <div class="gameButtons">
+            <img src="../../../assets/game assets/Rock.png" (click)="play('Rock')" height="100px">
+            <img src="../../../assets/game assets/Paper.png" (click)="play('Paper')" height="100px">
+            <img src="../../../assets/game assets/Scissors.png" (click)="play('Scissors')" height="100px">
+
+
+
+    </div>
+    <br>
+    <div align="center">
+        <app-chat [path]="gamePath"></app-chat>
+        <br>
+        <app-chat-logs></app-chat-logs>
+    </div>
+</div>

@@ -8,17 +8,18 @@ import { Message } from '../clases/message';
 export class FirebaseChatService {
 
   MensajesRef!: AngularFirestoreCollection<Message>;
+  private dbPath = '/chat';
 
   constructor(private db: AngularFirestore) {
   }
 
-  getAll(path:string): AngularFirestoreCollection<Message> {
-    this.MensajesRef = this.db.collection(path)
+  getAll(): AngularFirestoreCollection<Message> {
+    this.MensajesRef = this.db.collection(this.dbPath)
     return this.MensajesRef;
   }
 
-  create(mensajes: Message, path: string): any {
-    this.MensajesRef = this.db.collection(path)
+  create(mensajes: Message): any {
+    this.MensajesRef = this.db.collection(this.dbPath)
     return this.MensajesRef.add({ ...mensajes });
   }
 

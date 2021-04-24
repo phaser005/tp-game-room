@@ -130,6 +130,12 @@ export class AuthService {
     return this.collectionReferenceB.add({...log});
   }
 
+  GetCurrentDateAndTime():string{
+    var date = new Date();
+    var currentDate = String(date.getDate()+"-"+(date.getMonth()+1)+"-"+date.getFullYear()+" "+date.getHours()+":"+date.getMinutes());
+    return currentDate;
+  }
+
   GetCurrentDate():Date{
     var date = new Date();
     return date;
