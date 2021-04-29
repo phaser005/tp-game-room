@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TilesHighScore } from '../../clases/high-score'
+import { HighScoreService } from '../../services/high-score.service'
 
 @Component({
   selector: 'app-my-game',
@@ -10,13 +12,25 @@ export class MyGameComponent implements OnInit {
   
   public tiles:string[];
   public moves:number = 0;
+
+  public shuffleMoves:number = 0;
+  public lv1Moves:number = 0;
+  public lv2Moves:number = 0;
+  public lv3Moves:number = 0;
+
+  public selectedLevel:string = "";
+
+  public highScore: TilesHighScore;
   
-  constructor() {
+  constructor(private highScoreService: HighScoreService) {
     this.tiles = [];
+    this.highScore = new TilesHighScore();
    }
 
   ngOnInit(): void {
     this.getTiles();
+    this.disableButtons();
+    this.disableSaveScoreButton();
   }
 
   getTiles(){
@@ -31,8 +45,34 @@ export class MyGameComponent implements OnInit {
     this.changeTile(tileNumber);
 
     if(this.checkTiles()){
+      this.disableButtons();
+      this.enableSaveScoreButton();
       alert("You have turned all tiles to O in "+this.moves+" movements. congratulations!")
     }
+
+  }
+
+  disableButtons(){
+    for (let index = 0; index < 9; index++) {
+      (<HTMLInputElement> document.getElementById("button"+(index+1))).disabled = true;
+    }
+  }
+
+  enableButtons(){
+    for (let index = 0; index < 9; index++) {
+      (<HTMLInputElement> document.getElementById("button"+(index+1))).disabled = false;
+    }
+  }
+
+  enableSaveScoreButton(){
+
+    (<HTMLInputElement> document.getElementById("saveScoreButton")).disabled = false;
+
+  }
+
+  disableSaveScoreButton(){
+
+    (<HTMLInputElement> document.getElementById("saveScoreButton")).disabled = true;
 
   }
 
@@ -51,7 +91,8 @@ export class MyGameComponent implements OnInit {
   }
 
   shuffle(){
-    this.moves = 0;
+    this.resetMoves("shuffle");
+    this.selectedLevel = "shuffle"
     for (let index = 0; index < 9; index++) {
       if(this.getRandomInt() === 0){
         (<HTMLElement> document.getElementById("tile"+(index+1))).innerHTML = "O";
@@ -59,6 +100,31 @@ export class MyGameComponent implements OnInit {
         (<HTMLElement> document.getElementById("tile"+(index+1))).innerHTML = "X";
       }
     }
+
+    this.enableButtons();
+  }
+
+  resetMoves(gameMode:string){
+    this.moves = 0;
+
+    switch (gameMode) {
+      case "shuffle":
+        this.shuffleMoves = 0;
+        break;
+
+      case "lv1":
+        this.lv1Moves = 0;
+        break;
+
+      case "lv2":
+        this.lv2Moves = 0;
+      break;
+
+        case "lv3":
+          this.lv3Moves = 0;
+        break;
+    }
+    
 
   }
 
@@ -81,6 +147,24 @@ export class MyGameComponent implements OnInit {
   changeTile(tileNumber:number){
 
     this.moves++;
+
+    switch (this.selectedLevel) {
+      case "shuffle":
+        this.shuffleMoves++;
+        break;
+
+      case "lv1":
+        this.lv1Moves++
+        break;
+
+      case "lv2":
+        this.lv2Moves++
+      break;
+
+        case "lv3":
+          this.lv3Moves++
+        break;
+    }
 
     switch (tileNumber) {
       case 1:
@@ -138,15 +222,19 @@ export class MyGameComponent implements OnInit {
   }
 
   level(lvNumber:number){
+    this.enableButtons();
     switch (lvNumber) {
       case 1:
+        this.resetMoves("lv1");
+        this.selectedLevel = "lv1"
         for (let index = 0; index < 9; index++) {
             (<HTMLElement> document.getElementById("tile"+(index+1))).innerHTML = "O";
           }
           (<HTMLElement> document.getElementById("tile"+(1))).innerHTML = "X";
-        
         break;
       case 2:
+        this.selectedLevel = "lv2"
+        this.resetMoves("lv2");
         for (let index = 0; index < 9; index++) {
           (<HTMLElement> document.getElementById("tile"+(index+1))).innerHTML = "O";
         }
@@ -154,6 +242,8 @@ export class MyGameComponent implements OnInit {
         (<HTMLElement> document.getElementById("tile"+(9))).innerHTML = "X";
         break;
       case 3:
+        this.selectedLevel = "lv3"
+        this.resetMoves("lv3");
         for (let index = 0; index < 9; index++) {
           (<HTMLElement> document.getElementById("tile"+(index+1))).innerHTML = "O";
         }
@@ -169,5 +259,17 @@ export class MyGameComponent implements OnInit {
     }
   }
 
+  saveHighScore(){
+
+    this.highScore.shuffleMoves = this.shuffleMoves;
+    this.highScore.lv1Moves = this.lv1Moves;
+    this.highScore.lv2Moves = this.lv2Moves;
+    this.highScore.lv3Moves = this.lv3Moves;
+
+    this.highScoreService.saveTilesScore(this.highScore);
+
+    this.disableSaveScoreButton();
+    
+  }
 
 }

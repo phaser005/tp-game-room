@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, ValidationErrors, AbstractControl } from '@angular/forms';
+import { Survey } from '../../clases/survey'
+import { AuthService } from '../../services/auth.service'
+import { SurveyService } from '../../services/survey.service'
 
 @Component({
   selector: 'app-survey',
@@ -9,8 +12,13 @@ import { FormGroup, FormControl, FormBuilder, Validators, ValidationErrors, Abst
 export class SurveyComponent implements OnInit {
 
   public forma!: FormGroup
+  public survey!: Survey;
 
-  constructor(private fb:FormBuilder) {
+  constructor(private fb:FormBuilder,
+              private auth: AuthService,
+              private surveyService: SurveyService) {
+  
+    this.survey = new Survey();
 
   }
 
@@ -56,7 +64,22 @@ export class SurveyComponent implements OnInit {
   }
 
   enviar(){
-    console.info("Objeto Formulario", this.forma);
+    this.auth.GetCurrentUserName(this.auth.GetUserId()).then((res:any)=>{
+      this.survey.age = this.forma.value["age"];
+      this.survey.favoriteGame = this.forma.value["favoriteGame"];
+      this.survey.lastName = this.forma.value["lastName"]
+      this.survey.name = this.forma.value["name"]
+      this.survey.phone = this.forma.value["phone"]
+      this.survey.playHours = this.forma.value["playHours"]
+      this.survey.preferences = this.forma.value["preferences"]
+      this.survey.uid = this.auth.GetUserId();
+      this.survey.registeredName = res
+
+      this.surveyService.addNewSurvey(this.survey).then(()=>{
+        console.log("New survey log added");
+      });
+      
+    })
   }
 
   

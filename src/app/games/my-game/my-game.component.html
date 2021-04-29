@@ -4,43 +4,43 @@
         <tr id="row1">
             <td>
                 <h1 id="tile1" align="center">1</h1>
-                <button (click)="play(1)">Switch</button>
+                <button (click)="play(1)" id="button1">Switch</button>
             </td>
             <td>
                 <h1 id="tile2" align="center">2</h1>
-                <button (click)="play(2)">Switch</button>
+                <button (click)="play(2)" id="button2">Switch</button>
             </td>
             <td>
                 <h1 id="tile3" align="center">3</h1>
-                <button (click)="play(3)">Switch</button>
+                <button (click)="play(3)" id="button3">Switch</button>
             </td>
         </tr>
         <tr id="row2">
             <td>
                 <h1 id="tile4" align="center">4</h1>
-                <button (click)="play(4)">Switch</button>
+                <button (click)="play(4)" id="button4">Switch</button>
             </td>
             <td>
                 <h1 id="tile5" align="center">5</h1>
-                <button (click)="play(5)">Switch</button>
+                <button (click)="play(5)" id="button5">Switch</button>
             </td>
             <td>
                 <h1 id="tile6" align="center">6</h1>
-                <button (click)="play(6)">Switch</button>
+                <button (click)="play(6)" id="button6">Switch</button>
             </td>
         </tr>
         <tr id="row3">
             <td>
                 <h1 id="tile7" align="center">7</h1>
-                <button (click)="play(7)">Switch</button>
+                <button (click)="play(7)" id="button7">Switch</button>
             </td>
             <td>
                 <h1 id="tile8" align="center">8</h1>
-                <button (click)="play(8)">Switch</button>
+                <button (click)="play(8)" id="button8">Switch</button>
             </td>
             <td>
                 <h1 id="tile9" align="center">9</h1>
-                <button (click)="play(9)">Switch</button>
+                <button (click)="play(9)" id="button9">Switch</button>
             </td>
         </tr>
     </table>
@@ -52,12 +52,17 @@
     <button (click)="level(1)">Level 1</button>
     <button (click)="level(2)">Level 2</button>
     <button (click)="level(3)">Level 3</button>
+    <button (click)="saveHighScore()" id="saveScoreButton">Save my scores</button>
 
 </div>
 <br>
 
 <div class="scoreTable" align="center">
     <h5>Number of Movements {{moves}}</h5>
+    <h6>Shuffle Movements: {{shuffleMoves}}</h6>
+    <h6>Level 1 Movements: {{lv1Moves}} </h6>
+    <h6>Level 2 Movements: {{lv2Moves}} </h6>
+    <h6>Level 3 Movements: {{lv3Moves}} </h6>
 </div>
 
 <div align="center">
