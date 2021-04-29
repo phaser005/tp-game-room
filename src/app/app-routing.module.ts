@@ -12,6 +12,7 @@ const routes: Routes = [
   {path: "survey", component: SurveyComponent},
   {path: 'entry', loadChildren:() => import ('./entry/entry.module').then(m => m.EntryModule)},
   {path: 'games', loadChildren: () => import('./games/games.module').then(m => m.GamesModule)},
+  { path: 'highScores', loadChildren: () => import('./high-scores/high-scores.module').then(m => m.HighScoresModule) },
   {path: '**', redirectTo: 'home', pathMatch: 'full' },
 ];
 
