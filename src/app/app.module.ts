@@ -13,19 +13,27 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 //FORM IMPORTS//
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-//CUSTOM COMPONENTS IMPORTS//
+//SERVICES
+import { MemoryTestApiService } from './services/memory-test-api.service';
+import { HttpClientModule } from '@angular/common/http';
+
+//NOTIFICATIONS//
+import { NotifierModule, NotifierOptions } from 'angular-notifier';
+
+//CORE COMPONENTS
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { WhoAmIComponent } from './pages/who-am-i/who-am-i.component';
-
-//NOTIFICATIONS//
-import { NotifierModule, NotifierOptions } from 'angular-notifier';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { TicTacToeComponent } from './games/tic-tac-toe/tic-tac-toe.component';
 import { RockPaperScissorsComponent } from './games/rock-paper-scissors/rock-paper-scissors.component';
+import { MemoryTestComponent } from './games/memory-test/memory-test.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { ChatLogsComponent } from './components/chat-logs/chat-logs.component';
+import { SurveyComponent } from './pages/survey/survey.component';
+import { MyGameComponent } from './games/my-game/my-game.component';
+
 
 const config = {
   apiKey: "AIzaSyC9zXi3pcaonrm5bqDFLoyMilfrv0Gsups",
@@ -87,8 +95,11 @@ const notifierDefaultOptions: NotifierOptions = {
     UserProfileComponent,
     TicTacToeComponent,
     RockPaperScissorsComponent,
+    MemoryTestComponent,
+    MyGameComponent,
     ChatComponent,
-    ChatLogsComponent
+    ChatLogsComponent,
+    SurveyComponent
   ],
   imports: [
     BrowserModule,
@@ -99,9 +110,10 @@ const notifierDefaultOptions: NotifierOptions = {
     AngularFirestoreModule, //FIRESTORE
     AngularFireStorageModule, //STORAGE
     AngularFireAuthModule, //AUTH
-    NotifierModule.withConfig(notifierDefaultOptions)
+    NotifierModule.withConfig(notifierDefaultOptions),
+    HttpClientModule
   ],
-  providers: [],
+  providers: [MemoryTestApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

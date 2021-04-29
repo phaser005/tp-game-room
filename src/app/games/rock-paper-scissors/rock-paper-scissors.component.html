@@ -7,7 +7,10 @@
 
             <p><strong>Remember:</strong> “Rock breaks scissors, scissors cuts paper, paper covers rock.” </p>
             <div class='score'>
-
+                <h6 class="scoreH" >Player won matches: {{userWonMatches}} ---
+                    Draw matches: {{drawMatches}} ---
+                    Cpu won matches: {{pcWonMatches}}
+                </h6>
             </div>
                 <div class='message'>
             </div>
@@ -17,12 +20,64 @@
             <img src="../../../assets/game assets/Paper.png" (click)="play('Paper')" height="100px">
             <img src="../../../assets/game assets/Scissors.png" (click)="play('Scissors')" height="100px">
 
+            <!-- Win Modal -->
+            <div id="winModal" class="modal fade" role="dialog" [ngStyle]="{'display': winModalOpen ? 'block' : 'none', 'opacity': 1}">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">You Win!</h4>
+                            </div>
+                            <div class="modal-body">
 
+                            </div>
+                        <div class="modal-footer" align="right">
+                            <button type="button" id="btnClose" class="btn btn-danger" (click)="winModal(false)"><i class="fa fa-times fa-fw"></i>Close</button>
+                        </div>
+                        </div>
+                </div>
+            </div>
+            <!-- Win Modal -->
+
+            <!-- Lose Modal -->
+            <div id="loseModal" class="modal fade" role="dialog" [ngStyle]="{'display': loseModalOpen ? 'block' : 'none', 'opacity': 1}">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">You Lose!</h4>
+                        </div>
+                        <div class="modal-body">
+
+                        </div>
+                    <div class="modal-footer" align="right">
+                        <button type="button" id="btnClose" class="btn btn-danger" (click)="loseModal(false)"><i class="fa fa-times fa-fw"></i>Close</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Lose Modal -->
+
+        <!-- Draw Modal -->
+        <div id="drawModal" class="modal fade" role="dialog" [ngStyle]="{'display': drawModalOpen ? 'block' : 'none', 'opacity': 1}">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">It's a Draw!</h4>
+                    </div>
+                    <div class="modal-body">
+
+                    </div>
+                <div class="modal-footer" align="right">
+                    <button type="button" id="btnClose" class="btn btn-danger" (click)="drawModal(false)"><i class="fa fa-times fa-fw"></i>Close</button>
+                </div>
+                </div>
+            </div>
+        </div>
+        <!-- Draw Modal -->
 
     </div>
     <br>
     <div align="center">
-        <app-chat [path]="gamePath"></app-chat>
+        <app-chat></app-chat>
         <br>
         <app-chat-logs></app-chat-logs>
     </div>

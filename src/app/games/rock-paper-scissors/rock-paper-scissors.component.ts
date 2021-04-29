@@ -9,8 +9,14 @@ export class RockPaperScissorsComponent implements OnInit {
 
   @Input() gamePath: string = "/chat"
 
-  userWonMatches!: number;
-  pcWonMatches!: number;
+  userWonMatches: number = 0;
+  pcWonMatches: number = 0;
+  drawMatches: number = 0;
+
+  public winModalOpen : boolean = false;
+  public loseModalOpen : boolean = false;
+  public drawModalOpen : boolean = false;
+
 
   constructor() { }
 
@@ -20,7 +26,16 @@ export class RockPaperScissorsComponent implements OnInit {
   play(playerMovement:string){
     var pcMovement = this.pcMove();
     var winner = this.checkWinner(playerMovement, pcMovement);
-    alert(winner + " wins! //// You played: "+ playerMovement+" and the PC played: "+pcMovement);
+    if(winner === 'Draw'){
+      this.drawModal(true);
+      this.drawMatches ++;
+    }else if(winner === 'Player'){
+      this.winModal(true);
+      this.userWonMatches++
+    }else if(winner === 'Computer'){
+      this.loseModal(true);
+      this.pcWonMatches++
+    }
     
   }
 
@@ -68,6 +83,18 @@ export class RockPaperScissorsComponent implements OnInit {
       }
     }
     return winner
+  }
+
+
+
+  public winModal(open : boolean) : void {
+    this.winModalOpen = open;
+  }
+  public loseModal(open : boolean) : void {
+    this.loseModalOpen = open;
+  }
+  public drawModal(open : boolean) : void {
+    this.drawModalOpen = open;
   }
 
 }

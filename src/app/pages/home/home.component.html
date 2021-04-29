@@ -1,8 +1,34 @@
-<div class="jumbotron" align="center">
-    <h1>Welcome to the Home Page</h1>
-    <p>This is currently in development, please come back later!</p>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+<img src="../../../assets/bg.gif" width="100%" height="auto">
+
+<div class="gameContainer" *ngIf="LogInVerification('isLoggedIn')">
+
+  <div class="game1">
+    <h6 class="gameLabel1">Rock Paper Scissors</h6>
+    <a href="/games/rock-paper-scissors">
+      <img src="../../../assets/rps.gif" width="30%" height="auto">
+    </a>
   </div>
-  <div class="container" align="center">
-    <img src="../../../assets/yukkuriReimu.jpg" alt=""  width="600" height="366">
+
+  <div class="game2">
+    <h6 class="gameLabel2">Tic Tac Toe</h6>
+    <a href="/games/tic-tac-toe">
+      <img src="../../../assets/tictactoe.gif" width="29.7%" height="auto" href="/games/tic-tac-toe">
+    </a>
   </div>
-  <p align="center">Yukkuri shite ite ne~</p>
+
+  <div class="game3">
+    <h6 class="gameLabel3">Memory Test</h6>
+    <a href="/games/memory-test">
+      <img src="../../../assets/memo.gif" width="30.5%" height="auto">
+    </a>
+  </div>
+
+  <div class="game4">
+    <h6 class="gameLabel4">Tiles</h6>
+    <a href="/games/my-game">
+      <img src="../../../assets/custom.gif" width="30%" height="20px" height="auto">
+    </a>
+  </div>
+
+</div>

@@ -19,3 +19,27 @@ h1.gameTitle{
     padding: 5px;
 }
 
+
+.scoreH{
+
+    font-weight: bold;
+
+}
+
+
+/*----------------------------------  
+Section - Modal
+------------------------------------*/
+.modal-dialog {
+    -webkit-transform: translate(0,-50%);
+    -o-transform: translate(0,-50%);
+    transform: translate(0,-50%);
+    top: 20%;
+    margin: 0 auto;
+}
+.modal-header{
+    background-color:rgb(221, 221, 221);
+}
+.modal-content {
+    overflow:hidden;
+}

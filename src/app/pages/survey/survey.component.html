@@ -1,0 +1,108 @@
+<div class="container">
+
+    <form [formGroup]="forma" (ngSubmit)="enviar()">
+
+        <div class="row">
+            <div class="col-md-12 mb-5">
+                <h2>Yukkuri System Survey</h2>
+            </div>
+        </div>
+
+        <div class="row formulario">
+
+            <div class="col-md-6 mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Type your name" formControlName="name">
+                <small class="invalid" *ngIf="forma.controls.name.errors?.required && forma.controls.name.touched">Name required</small>
+                <small class="invalid" *ngIf="forma.controls.name.errors?.contiene">Name can't have spaces</small>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="lastName" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="lastName" placeholder="Type your last name" formControlName="lastName">
+                <small class="invalid" *ngIf="forma.controls.lastName.errors?.required && forma.controls.lastName.touched">Last name required</small>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="dni" class="form-label">Age</label>
+                <input type="number" class="form-control" id="age" placeholder="Type your age" formControlName="age">
+                <small class="invalid" *ngIf="forma.controls.age.errors?.min || forma.controls.age.errors?.max && forma.controls.age.touched ">You must be ovey 18 years old</small>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="phone" class="form-label">Phone</label>
+                <input type="text" class="form-control" id="phone" placeholder="Type phone" formControlName="phone">
+                <small class="invalid" 
+                *ngIf="forma.controls.phone.errors?.required && forma.controls.phone.touched">
+                Phone required
+                </small>
+                <small class="invalid" 
+                *ngIf="forma.controls.phone.errors?.maxlength &&
+                forma.controls.phone.touched">
+                Phone can't have more than 10 characters
+                </small>
+                <small class="invalid" 
+                *ngIf="forma.controls.phone.errors?.pattern &&
+                forma.controls.phone.touched">
+                Phone doesn't have letters!
+                </small>
+            </div>
+
+            <div class="col-md-12 mb-5">
+                <h2>Please answer some questions: </h2>
+            </div>
+
+            <div class="col-md-6 mb-3" class="question">
+                <p class="questionTitle">What's your favorite game?</p>
+                <input type="radio" id="favoriteGame" formControlName="favoriteGame" value="tic-tac-toe">
+                <label for="tic-tac-toe">Tic Tac Toe</label>
+                <br>
+                <input type="radio" id="favoriteGame" formControlName="favoriteGame" value="rock paper scissors">
+                <label for="tic-tac-toe">Rock Paper Scissors</label>
+                <br>
+                <input type="radio" id="favoriteGame" formControlName="favoriteGame" value="memory test">
+                <label for="tic-tac-toe">Memory Test</label>
+                <br>
+                <input type="radio" id="favoriteGame" formControlName="favoriteGame" value="custom game">
+                <label for="tic-tac-toe">My Custom Game</label>
+            </div>
+
+            <div>
+                <br>
+            </div>
+
+            <div class="col-md-6 mb-3" class="question">
+                <p class="questionTitle">What do you seek in a game?: </p>
+                <input type="text" class="preferencesInput" class="col-md-6 mb-3" id="preferences" formControlName="preferences">
+                <small class="invalid preferencesInvalid" *ngIf="forma.controls.preferences.errors?.required && forma.controls.preferences.touched">Please answer this question</small>
+                <br><br>
+            </div>
+
+            <div>
+                <br>
+            </div>
+
+            <div class="col-md-6 mb-3" class="question">
+                <p class="questionTitle">Hoy many hours a day do you play games?</p>
+                <br>
+                <h6>Select from 1 to 24 (Sleep is for the weak): 
+                    <h6 id="hours" align="left"></h6> 
+                </h6> 
+                <input type="range" min="1" max="24" step="1" class="col-md-8 mb-4" list="hours" id="playHours" formControlName="playHours" oninput="document.getElementById('hours').innerHTML = this.value" />
+                
+            </div>
+            
+        </div>
+
+      <div class="row">
+        <div class="col-md-12 d-grid gap-2">
+            <br>
+          <button type="submit" class="btn btn-primary btn-block" [disabled]="forma.invalid">
+            Aceptar
+          </button>
+        </div>
+      </div>
+
+    </form>
+    
+  </div>
