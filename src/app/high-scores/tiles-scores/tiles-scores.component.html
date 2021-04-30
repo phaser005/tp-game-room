@@ -1,1 +1,10 @@
-<p>tiles-scores works!</p>
+<div class="row" class="scroll">
+    <div *ngFor="let score of highscores">
+        <p>Name: {{score.userName}}</p>
+        <p>Shuffle Moves: {{score.shuffleMoves}}</p>
+        <p>Lv1 Moves: {{score.lv1Moves}}</p>
+        <p>Lv2 Moves: {{score.lv2Moves}}</p>
+        <p>Lv3 Moves: {{score.lv3Moves}}</p>
+        <hr>
+    </div>
+</div>

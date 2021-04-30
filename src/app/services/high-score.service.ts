@@ -56,12 +56,15 @@ export class HighScoreService {
 
   //ROCK PAPER SCISSORS FUNCTIONS
   saveRockPaperScissorsScore(score:RockPaperScissorsHighScore){
-    return this.rockPaperScissorsCollectionReference.add({...score})
+    this.auth.GetCurrentUserName(this.auth.GetUserId()).then((res:any)=>{
+      score.userName = res;
+      score.userId = this.auth.GetUserId();
+      return this.rockPaperScissorsCollectionReference.add({...score})
+    })
   }
 
-  loadRockPaperScissorsScores(){
-
-
+  loadRockPaperScissorsScores():AngularFirestoreCollection<RockPaperScissorsHighScore>{
+    return this.rockPaperScissorsCollectionReference
   }
 
   //MEMO TEST FUNCTIONS
@@ -69,9 +72,8 @@ export class HighScoreService {
     return this.memoTestCollectionReference.add({...score})
   }
 
-  loadMemoTestScores(){
-
-
+  loadMemoTestScores():AngularFirestoreCollection<MemoTestHighScore>{
+    return this.memoTestCollectionReference
   }
 
   //TILES FUNCTIONS
@@ -81,12 +83,11 @@ export class HighScoreService {
       score.userId = this.auth.GetUserId();
       return this.tilesCollectionReference.add({...score})
     })
-    
+
   }
 
-  loadTilesScores(){
-
-
+  loadTilesScores():AngularFirestoreCollection<TilesHighScore>{
+    return this.tilesCollectionReference
   }
 
 }

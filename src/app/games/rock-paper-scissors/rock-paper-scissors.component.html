@@ -9,8 +9,16 @@
             <div class='score'>
                 <h6 class="scoreH" >Player won matches: {{userWonMatches}} ---
                     Draw matches: {{drawMatches}} ---
-                    Cpu won matches: {{pcWonMatches}}
+                    Cpu won matches: {{pcWonMatches}} ---
+                    Total matches: {{timesPlayed}}
                 </h6>
+                <h6 class="scoreH" >Win ratio: {{winRatio}}% ---
+                    Draw ratio: {{drawRatio}}% ---
+                    Lose ratio: {{loseRatio}}%
+                </h6>
+                <div>
+                    <button (click)="saveScore()">Save My scores</button>
+                </div>
             </div>
                 <div class='message'>
             </div>

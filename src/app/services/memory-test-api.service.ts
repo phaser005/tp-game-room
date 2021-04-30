@@ -14,8 +14,5 @@ export class MemoryTestApiService {
   public getFiveCards(){
     return this.httpClient.get("https://deckofcardsapi.com/api/deck/new/draw/?count=8");
   }
-
-  public gamestart(){
-    const algo = 0;
-  }
+  
 }

@@ -15,6 +15,10 @@ export class RockPaperScissorsHighScore {
 
     userId!:string;
     userName!:string;
+    timesPlayed!:number;
+    winRatio!:number;
+    drawRatio!:number;
+    loseRatio!:number;
 
 }
 
