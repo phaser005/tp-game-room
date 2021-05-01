@@ -1,1 +1,8 @@
-<p>memo-test-scores works!</p>
+<div class="row" class="scroll">
+    <div *ngFor="let score of highscores">
+        <p>Name: {{score.userName}}</p>
+        <p>Moves: {{score.moves}}</p>
+        <p>Date: {{score.date}}</p>
+        <hr>
+    </div>
+</div>

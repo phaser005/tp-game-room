@@ -51,7 +51,7 @@ export class HighScoreService {
   }
 
   loadTicTacToeScores(){
-
+    return this.titTacToeCollectionReference
   }
 
   //ROCK PAPER SCISSORS FUNCTIONS
@@ -69,7 +69,11 @@ export class HighScoreService {
 
   //MEMO TEST FUNCTIONS
   saveMemoTestScore(score:MemoTestHighScore){
-    return this.memoTestCollectionReference.add({...score})
+    this.auth.GetCurrentUserName(this.auth.GetUserId()).then((res:any)=>{
+      score.userName = res;
+      score.userId = this.auth.GetUserId();
+      return this.memoTestCollectionReference.add({...score})
+    })
   }
 
   loadMemoTestScores():AngularFirestoreCollection<MemoTestHighScore>{

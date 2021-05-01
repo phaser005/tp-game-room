@@ -265,6 +265,7 @@ export class MyGameComponent implements OnInit {
     this.highScore.lv1Moves = this.lv1Moves;
     this.highScore.lv2Moves = this.lv2Moves;
     this.highScore.lv3Moves = this.lv3Moves;
+    this.highScore.date = (new Date()).toString();
 
     this.highScoreService.saveTilesScore(this.highScore);
 

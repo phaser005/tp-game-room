@@ -1,1 +1,10 @@
-<p>tic-tac-toe-scores works!</p>
+<div class="row" class="scroll">
+    <div *ngFor="let score of highscores">
+        <p>Name: {{score.userName}}</p>
+        <p>Win Ratio: {{score.winRatio}}%</p>
+        <p>Draw Ratio: {{score.drawRatio}}%</p>
+        <p>Lose Ratio: {{score.loseRatio}}%</p>
+        <p>Times Played: {{score.timesPlayed}}</p>
+        <hr>
+    </div>
+</div>

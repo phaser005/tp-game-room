@@ -8,6 +8,11 @@ export class TicTacToeHighScore {
 
     userId!:string;
     userName!:string;
+    timesPlayed!:number;
+    winRatio!:number;
+    drawRatio!:number;
+    loseRatio!:number;
+    date!:string;
 
 }
 
@@ -19,6 +24,7 @@ export class RockPaperScissorsHighScore {
     winRatio!:number;
     drawRatio!:number;
     loseRatio!:number;
+    date!:string;
 
 }
 
@@ -26,7 +32,8 @@ export class MemoTestHighScore {
 
     userId!:string;
     userName!:string;
-
+    moves!:number;
+    date!:string;
 
 }
 
@@ -38,6 +45,7 @@ export class TilesHighScore {
     lv1Moves!:number;
     lv2Moves!:number;
     lv3Moves!:number;
+    date!:string;
 
 }
 

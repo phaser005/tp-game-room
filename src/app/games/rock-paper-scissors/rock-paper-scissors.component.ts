@@ -131,6 +131,7 @@ export class RockPaperScissorsComponent implements OnInit {
     this.highScore.winRatio = this.winRatio;
     this.highScore.drawRatio = this.drawRatio;
     this.highScore.loseRatio = this.loseRatio;
+    this.highScore.date = (new Date()).toString();
 
     this.highScoreService.saveRockPaperScissorsScore(this.highScore);
   }

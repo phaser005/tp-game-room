@@ -1,8 +1,330 @@
-<div align="center">
-    <h1>Sorry, this game is not yet developed</h1>
-    <h4>Please come back later</h4>
-    <img src="../../../assets/moe.jpg" alt="">
-    <p>You can still use the chat</p>
+<br>
+<h6 align="center">PLEASE WAIT UNTIL THE CARDS FLIP THEMSELVES OR GET DISABLED TO CLICK ANOTHER SET OF CARDS</h6>
+<h6 align="center">POR FAVOR ESPERA HASTA QUE LAS CARTAS SE VOLTEEN O SE BLOQUEEN PARA SELECCIONAR OTRO PAR DE CARTAS</h6>
+
+<button (click)="check()">DATE</button>
+
+<div class="score" align="center">
+    <h3>Movements: {{moves}}</h3>
+    <button id="save" (click)="saveScore()">Save My Score</button>
+   
+</div>
+<br> 
+<div class="gameContainer">
+
+    <!--ROW 1-->
+    <div class="row" align="center">
+        <!--COL 1-->
+        <div class="col-md-3">
+            
+            <button (click)="flipCard(0)" id="button0" *ngIf="!flippedCards[0]">
+                <img class="gameImg"
+                id="card0"
+                src="../../../assets/game assets/default.png"
+                alt={{deckCards[0]}}>
+            </button>
+
+            <button (click)="flipCard(0)" id="button0" *ngIf="flippedCards[0]">
+                <img class="gameImg"
+                id="card0"
+                src={{deckCards[0]}}
+                alt={{deckCards[0]}}>
+            </button>
+
+        </div>
+    
+        <div class="col-md-3">
+            
+            <button (click)="flipCard(1)" id="button1" *ngIf="!flippedCards[1]">
+                <img class="gameImg"
+                id="card1"
+                src="../../../assets/game assets/default.png"
+                alt={{deckCards[1]}}>
+            </button>
+
+            <button (click)="flipCard(1)" id="button1" *ngIf="flippedCards[1]">
+                <img class="gameImg"
+                id="card1"
+                src={{deckCards[1]}}
+                alt={{deckCards[1]}}>
+            </button>
+
+        </div>
+
+        <div class="col-md-3">
+            
+            <button (click)="flipCard(2)" id="button2" *ngIf="!flippedCards[2]">
+                <img class="gameImg"
+                id="card2"
+                src="../../../assets/game assets/default.png"
+                alt={{deckCards[2]}}>
+            </button>
+
+            <button (click)="flipCard(2)" id="button2" *ngIf="flippedCards[2]">
+                <img class="gameImg"
+                id="card2"
+                src={{deckCards[2]}}
+                alt={{deckCards[2]}}>
+            </button>
+
+        </div>
+
+        <div class="col-md-3">
+            
+            <button (click)="flipCard(3)" id="button3" *ngIf="!flippedCards[3]">
+                <img class="gameImg"
+                id="card3"
+                src="../../../assets/game assets/default.png"
+                alt={{deckCards[3]}}>
+                
+            </button>
+
+            <button (click)="flipCard(3)" id="button3" *ngIf="flippedCards[3]">
+                <img class="gameImg"
+                id="card3"
+                src={{deckCards[3]}}
+                alt={{deckCards[3]}}>
+            </button>
+
+        </div>
+        <!--COL 1-->
+    </div>
+    <!--ROW 1-->
+
+    <!--ROW 2-->
+    <div class="row" align="center">
+        <!--COL 2-->
+        <div class="col-md-3">
+            
+            <button (click)="flipCard(4)" id="button4" *ngIf="!flippedCards[4]">
+                <img class="gameImg"
+                id="card4"
+                src="../../../assets/game assets/default.png"
+                alt={{deckCards[4]}}>
+            </button>
+
+            <button (click)="flipCard(4)" id="button4" *ngIf="flippedCards[4]">
+                <img class="gameImg"
+                id="card4"
+                src={{deckCards[4]}}
+                alt={{deckCards[4]}}>
+            </button>
+
+        </div>
+    
+        <div class="col-md-3">
+            
+            <button (click)="flipCard(5)" id="button5" *ngIf="!flippedCards[5]">
+                <img class="gameImg"
+                id="card5"
+                src="../../../assets/game assets/default.png"
+                alt={{deckCards[5]}}>
+            </button>
+
+            <button (click)="flipCard(5)" id="button5" *ngIf="flippedCards[5]">
+                <img class="gameImg"
+                id="card5"
+                src={{deckCards[5]}}
+                alt={{deckCards[5]}}>
+            </button>
+
+        </div>
+
+        <div class="col-md-3">
+            
+            <button (click)="flipCard(6)" id="button6" *ngIf="!flippedCards[6]">
+                <img class="gameImg"
+                id="card6"
+                src="../../../assets/game assets/default.png"
+                alt={{deckCards[6]}}>
+            </button>
+
+            <button (click)="flipCard(6)" id="button6" *ngIf="flippedCards[6]">
+                <img class="gameImg"
+                id="card6"
+                src={{deckCards[6]}}
+                alt={{deckCards[6]}}>
+            </button>
+
+        </div>
+
+        <div class="col-md-3">
+            
+            <button (click)="flipCard(7)" id="button7" *ngIf="!flippedCards[7]">
+                <img class="gameImg"
+                id="card7"
+                src="../../../assets/game assets/default.png"
+                alt={{deckCards[7]}}>
+            </button>
+
+            <button (click)="flipCard(7)" id="button7" *ngIf="flippedCards[7]">
+                <img class="gameImg"
+                id="card7"
+                src={{deckCards[7]}}
+                alt={{deckCards[7]}}>
+            </button>
+
+        </div>
+        <!--COL 2-->
+    </div>
+    <!--ROW 2-->
+
+    <!--ROW 3-->
+    <div class="row" align="center">
+        <!--COL 3-->
+        <div class="col-md-3">
+            
+            <button (click)="flipCard(8)" id="button8" *ngIf="!flippedCards[8]">
+                <img class="gameImg"
+                id="card8"
+                src="../../../assets/game assets/default.png"
+                alt={{deckCards[8]}}>
+            </button>
+
+            <button (click)="flipCard(8)" id="button8" *ngIf="flippedCards[8]">
+                <img class="gameImg"
+                id="card8"
+                src={{deckCards[8]}}
+                alt={{deckCards[8]}}>
+            </button>
+
+        </div>
+    
+        <div class="col-md-3">
+            
+            <button (click)="flipCard(9)" id="button9" *ngIf="!flippedCards[9]">
+                <img class="gameImg"
+                id="card9"
+                src="../../../assets/game assets/default.png"
+                alt={{deckCards[9]}}>
+            </button>
+
+            <button (click)="flipCard(9)" id="button9" *ngIf="flippedCards[9]">
+                <img class="gameImg"
+                id="card9"
+                src={{deckCards[9]}}
+                alt={{deckCards[9]}}>
+            </button>
+
+        </div>
+
+        <div class="col-md-3">
+            
+            <button (click)="flipCard(10)" id="button10" *ngIf="!flippedCards[10]">
+                <img class="gameImg"
+                id="card10"
+                src="../../../assets/game assets/default.png"
+                alt={{deckCards[10]}}>
+            </button>
+
+            <button (click)="flipCard(10)" id="button10" *ngIf="flippedCards[10]">
+                <img class="gameImg"
+                id="card10"
+                src={{deckCards[10]}}
+                alt={{deckCards[10]}}>
+            </button>
+
+        </div>
+
+        <div class="col-md-3">
+            
+            <button (click)="flipCard(11)" id="button11" *ngIf="!flippedCards[11]">
+                <img class="gameImg"
+                id="card11"
+                src="../../../assets/game assets/default.png"
+                alt={{deckCards[11]}}>
+            </button>
+
+            <button (click)="flipCard(11)" id="button11" *ngIf="flippedCards[11]">
+                <img class="gameImg"
+                id="card11"
+                src={{deckCards[11]}}
+                alt={{deckCards[11]}}>
+            </button>
+
+        </div>
+        <!--COL 3-->
+    </div>
+    <!--ROW 3-->
+
+    <!--ROW 4-->
+    <div class="row" align="center">
+        <!--COL 4-->
+        <div class="col-md-3">
+            
+            <button (click)="flipCard(12)" id="button12" *ngIf="!flippedCards[12]">
+                <img class="gameImg"
+                id="card12"
+                src="../../../assets/game assets/default.png"
+                alt={{deckCards[12]}}>
+            </button>
+
+            <button (click)="flipCard(12)" id="button12" *ngIf="flippedCards[12]">
+                <img class="gameImg"
+                id="card12"
+                src={{deckCards[12]}}
+                alt={{deckCards[12]}}>
+            </button>
+
+        </div>
+    
+        <div class="col-md-3">
+            
+            <button (click)="flipCard(13)" id="button13" *ngIf="!flippedCards[13]">
+                <img class="gameImg"
+                id="card13"
+                src="../../../assets/game assets/default.png"
+                alt={{deckCards[13]}}>
+            </button>
+
+            <button (click)="flipCard(13)" id="button13" *ngIf="flippedCards[13]">
+                <img class="gameImg"
+                id="card13"
+                src={{deckCards[13]}}
+                alt={{deckCards[3]}}>
+            </button>
+
+        </div>
+
+        <div class="col-md-3">
+            
+            <button (click)="flipCard(14)" id="button14" *ngIf="!flippedCards[14]">
+                <img class="gameImg"
+                id="card14"
+                src="../../../assets/game assets/default.png"
+                alt={{deckCards[14]}}>
+            </button>
+
+            <button (click)="flipCard(14)" id="button14" *ngIf="flippedCards[14]">
+                <img class="gameImg"
+                id="card14"
+                src={{deckCards[14]}} 
+                alt={{deckCards[14]}}>
+            </button>
+
+        </div>
+
+        <div class="col-md-3">
+            
+            <button (click)="flipCard(15)" id="button15" *ngIf="!flippedCards[15]">
+                <img class="gameImg"
+                id="card15"
+                src="../../../assets/game assets/default.png"
+                alt={{deckCards[15]}}>
+            </button>
+
+            <button (click)="flipCard(15)" id="button15" *ngIf="flippedCards[15]">
+                <img class="gameImg"
+                id="card15"
+                src={{deckCards[15]}}
+                alt={{deckCards[15]}}>
+            </button>
+
+        </div>
+        <!--COL 4-->
+    </div>
+    <!--ROW 4-->
+
 </div>
 
 <div align="center">

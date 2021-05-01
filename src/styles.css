@@ -12,6 +12,7 @@ body {
 	margin: 0;
 	box-sizing: border-box;
 	font-family: "Roboto", "Tahoma", "Trebuchet MS", "Arial", "Helvetica", sans-serif;
+	background-color: rgb(152, 142, 163);
 	font-size: 14px;
 }
 

@@ -1,4 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { TicTacToeHighScore } from '../../clases/high-score'
+import { HighScoreService } from '../../services/high-score.service'
 
 @Component({
   selector: 'app-tic-tac-toe',
@@ -8,7 +10,16 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 export class TicTacToeComponent implements OnInit {
 
     @Input() gamePath: string = "/chat"
-    constructor() {}
+    public highScore: TicTacToeHighScore;
+    timesPlayed: number = 0;
+
+    winRatio: number = 0;
+    loseRatio: number = 0;
+    drawRatio: number = 0;
+
+    constructor(private highScoreService: HighScoreService) {
+        this.highScore = new TicTacToeHighScore();
+    }
 
   ngOnInit(): void {
     let cell11: HTMLElement = <HTMLElement>document.getElementById("cell11");
@@ -33,6 +44,19 @@ export class TicTacToeComponent implements OnInit {
     cell32.onclick = (e) => { ttt.ClickCell(3, 2); }
     cell33.onclick = (e) => { ttt.ClickCell(3, 3); }
     reset.onclick = (e) => { ttt.Reset(); }
+  }
+
+  saveHighScore(){
+
+
+    this.highScore.timesPlayed = this.timesPlayed;
+    this.highScore.winRatio = this.winRatio;
+    this.highScore.drawRatio = this.drawRatio;
+    this.highScore.loseRatio = this.loseRatio;
+    this.highScore.date = (new Date()).toString();
+
+    this.highScoreService.saveTicTacToeScore(this.highScore);
+    
   }
 
 }
