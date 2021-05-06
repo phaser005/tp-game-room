@@ -145,12 +145,25 @@ export class MemoryTestComponent implements OnInit {
 
   checkIfCompleted():boolean{
     var result = false;
-    for (let index = 0; index < 16; index++) {
-      if(this.flippedCards[index]){
-        result = true
-      }else{
-        result = false
-      }
+    if(
+      this.flippedCards[0] === true &&
+      this.flippedCards[1] === true &&
+      this.flippedCards[2] === true &&
+      this.flippedCards[3] === true &&
+      this.flippedCards[4] === true &&
+      this.flippedCards[5] === true &&
+      this.flippedCards[6] === true &&
+      this.flippedCards[7] === true &&
+      this.flippedCards[8] === true &&
+      this.flippedCards[9] === true &&
+      this.flippedCards[10] === true &&
+      this.flippedCards[11] === true &&
+      this.flippedCards[12] === true &&
+      this.flippedCards[13] === true &&
+      this.flippedCards[14] === true &&
+      this.flippedCards[15] === true
+    ){
+      result = true
     }
     return result;
   }
