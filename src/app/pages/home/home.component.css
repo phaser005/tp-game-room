@@ -27,86 +27,68 @@
     top: 30%;
     left: 23%;
     margin-left: -80px;
-    margin-top: -90px;
+    margin-top: -100px;
     border-radius: 1em;
 
 }
 
-.gameLabel1 {
-
+.gameLabel1{
     color: white;
-    top: 30%;
+    margin-top: 1px;
     left: 10%;
     margin-left: 100px;
-
-
 }
 
 .game2{
-
     position: fixed;
     width: 95%;
     height: 80%;
     top: 31.6%;
     left: 62.5%;
     margin-left: -100px;
-    margin-top: -100px;
+    margin-top: -110px;
     border-radius: 1em;
-
 }
 
 .gameLabel2 {
-
     color: white;
-    top: 30%;
+    margin-top: 1px;
     left: 70%;
     margin-left: 150px;
-
-
 }
 
 .game3{
-
     position: fixed;
-    width: 95%;
-    height: 80%;
-    top: 70%;
+    width: 93%;
+    height: 75%;
+    top: 71%;
     left: 24.5%;
     margin-left: -100px;
-    margin-top: -100px;
+    margin-top: -110px;
     border-radius: 1em;
-
 }
 
 .gameLabel3 {
-
     color: white;
-    top: 30%;
+    margin-top: 0%;
     left: 70%;
     margin-left: 130px;
-
-
 }
 
 .game4{
-
     position: fixed;
     width: 90%;
     height: 80%;
     top: 69%;
     left: 63%;
     margin-left: -100px;
-    margin-top: -100px;
+    margin-top: -110px;
     border-radius: 1em;
-
 }
 
 .gameLabel4 {
-
     color: white;
     top: 30%;
     left: 70%;
     margin-left: 160px;
-
-
 }

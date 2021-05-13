@@ -47,7 +47,11 @@ export class HighScoreService {
 
   //TIC TAC TOE FUNCTIONS
   saveTicTacToeScore(score:TicTacToeHighScore){
-    return this.titTacToeCollectionReference.add({...score})
+    this.auth.GetCurrentUserName(this.auth.GetUserId()).then((res:any)=>{
+      score.userName = res;
+      score.userId = this.auth.GetUserId();
+      return this.titTacToeCollectionReference.add({...score})
+    })
   }
 
   loadTicTacToeScores(){

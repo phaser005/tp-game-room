@@ -1,29 +1,45 @@
 <div class="right">
-    <h1>Tic Tac Toe</h1>
-        <div align="center">
+    <h1 align="center">TIC TAC TOE</h1>
+    <div class="container-out">
+        <div class="container-in">
+        <div class="table-container">
+            <h6>Player {{playerNumber}} ( <span id="player">{{player}}</span> ) your turn</h6>
             <table align="center">
-                <tr>
-                    <td id="cell11" class="cell">&nbsp;</td>
-                    <td id="cell12" class="cell">&nbsp;</td>
-                    <td id="cell13" class="cell">&nbsp;</td>
-                </tr>
-                <tr>
-                    <td id="cell21" class="cell">&nbsp;</td>
-                    <td id="cell22" class="cell">&nbsp;</td>
-                    <td id="cell23" class="cell">&nbsp;</td>
-                </tr>
-                <tr>
-                    <td id="cell31" class="cell">&nbsp;</td>
-                    <td id="cell32" class="cell">&nbsp;</td>
-                    <td id="cell33" class="cell">&nbsp;</td>
-                </tr>
+            <tr>
+                <td><div class="box" (click)="play('1')" id="1"></div></td>
+                <td><div class="box" (click)="play('2')" id="2"></div></td>
+                <td><div class="box" (click)="play('3')" id="3"></div></td>
+            </tr>
+            <tr>
+                <td><div class="box" (click)="play('4')" id="4"></div></td>
+                <td><div class="box" (click)="play('5')" id="5"></div></td>
+                <td><div class="box" (click)="play('6')" id="6"></div></td>
+            </tr>
+            <tr>
+                <td><div class="box" (click)="play('7')" id="7"></div></td>
+                <td><div class="box" (click)="play('8')" id="8"></div></td>
+                <td><div class="box" (click)="play('9')" id="9"></div></td>
+            </tr>
             </table>
-            <notifier-container></notifier-container>
-            <br /><br />
-            <input id="reset"  align="center" type="button" value="RESET" />
-            <br /><br />
-            <button (click)="saveHighScore()">SAVE MY SCORE</button>
+    
+            <h2 id="message">Player <span id="winner"></span> Wins</h2>
+            <button id="reset" (click)="reset()">Reset</button>
+            <button (click)="saveHighScore()">Save my Scores</button>
         </div>
+        </div>
+        <div align="center">
+            <h3>SCORES</h3>
+            <h6 class="scoreH" >P1 won matches: {{userWonMatches}} ---
+                Draw matches: {{drawMatches}} ---
+                P1 lost matches: {{pcWonMatches}} ---
+                Total matches: {{timesPlayed}}
+            </h6>
+            <h6 class="scoreH" >Win ratio for Player 1: {{winRatio}}% ---
+                Draw ratio for Player 1: {{drawRatio}}% ---
+                Lose ratio for Player 1: {{loseRatio}}%
+            </h6>
+        </div>
+    </div>
 </div>
 <br>
 <div class="right">
