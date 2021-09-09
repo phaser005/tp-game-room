@@ -55,6 +55,7 @@ export class AuthService {
               ]);
             }
             this.SaveLogInCookie(this.newUserLog.uid);
+            this.SaveNameCookie(email);
             this.router.navigate(['/home']);
           } else {
             throw new Error;
@@ -145,8 +146,13 @@ export class AuthService {
     document.cookie = "isLoggedIn="+uid;
   }
 
+  SaveNameCookie(name: string){
+    document.cookie = "isLoggedInName="+name;
+  }
+
   DeleteLogInCookie(){
     document.cookie = "isLoggedIn" + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    document.cookie = "isLoggedInName" + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
   }
 
   SearchLogInCookie(cookie:string):boolean{
@@ -170,6 +176,22 @@ export class AuthService {
         var cookieName = name.split("=", 1);
         //console.log(cookieName)
         return cookieName[0];
+      }
+    }
+    return "";
+  }
+
+  getCookieValue(cname:string) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
       }
     }
     return "";

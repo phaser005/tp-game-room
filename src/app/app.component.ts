@@ -8,10 +8,13 @@ import { AuthService } from './services/auth.service';
 })
 export class AppComponent {
   title = 'tpGameRoom';
+  userName?:string;
+
   constructor(private auth: AuthService){
   }
 
   LogInVerification(cookie:string):boolean{
+    this.userName = this.auth.getCookieValue("isLoggedInName");
     return this.auth.SearchLogInCookie(cookie);
   }
 
