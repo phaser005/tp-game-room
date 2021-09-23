@@ -1,0 +1,123 @@
+<div class="options">
+    <h4>Choose a category</h4>
+    <button (click)="gameStart('objects')" id="categoryObject">Objects</button>
+    <button (click)="gameStart('countries')" id="categoryCountries">Countries</button>
+    <button (click)="gameStart('animals')" id="categoryAnimals">Animals</button>
+
+    <button (click)="disableAllLetters()">Disable</button>
+</div>
+
+
+<div class="gamespace">
+    <div *ngIf="errorCount === 0">
+        <img src="../../../assets/hangman/0.png" alt="" height="200px" width="200px">
+    </div>
+    <div *ngIf="errorCount === 1">
+        <img src="../../../assets/hangman/1.png" alt="" height="200px" width="200px">
+    </div>
+    <div *ngIf="errorCount === 2">
+        <img src="../../../assets/hangman/2.png" alt="" height="200px" width="200px">
+    </div>
+    <div *ngIf="errorCount === 3">
+        <img src="../../../assets/hangman/3.png" alt="" height="200px" width="200px">
+    </div>
+    <div *ngIf="errorCount === 4">
+        <img src="../../../assets/hangman/4.png" alt="" height="200px" width="200px">
+    </div>
+    <div *ngIf="errorCount === 5">
+        <img src="../../../assets/hangman/5.png" alt="" height="200px" width="200px">
+    </div>
+    <div *ngIf="errorCount === 6">
+        <img src="../../../assets/hangman/6.png" alt="" height="200px" width="200px">
+    </div>
+</div>
+
+<div class="keyboard">
+    <div style="overflow-x:auto;">
+        <table>
+          <tr>
+            <td><button id="q" (click)="selectedLetter('q')"> Q </button></td>
+            <td><button id="w" (click)="selectedLetter('w')"> W </button></td>
+            <td><button id="e" (click)="selectedLetter('e')"> E </button></td>
+            <td><button id="r" (click)="selectedLetter('r')"> R </button></td>
+            <td><button id="t" (click)="selectedLetter('t')"> T </button></td>
+            <td><button id="y" (click)="selectedLetter('y')"> Y </button></td>
+            <td><button id="u" (click)="selectedLetter('u')"> U </button></td>
+            <td><button id="i" (click)="selectedLetter('i')"> I </button></td>
+            <td><button id="o" (click)="selectedLetter('o')"> O </button></td>
+            <td><button id="p" (click)="selectedLetter('p')"> P </button></td>
+          </tr>
+
+          <tr>
+            <td><button id="a" (click)="selectedLetter('a')"> A </button></td>
+            <td><button id="s" (click)="selectedLetter('s')"> S </button></td>
+            <td><button id="d" (click)="selectedLetter('d')"> D </button></td>
+            <td><button id="f" (click)="selectedLetter('f')"> F </button></td>
+            <td><button id="g" (click)="selectedLetter('g')"> G </button></td>
+            <td><button id="h" (click)="selectedLetter('h')"> H </button></td>
+            <td><button id="j" (click)="selectedLetter('j')"> J </button></td>
+            <td><button id="k" (click)="selectedLetter('k')"> K </button></td>
+            <td><button id="l" (click)="selectedLetter('l')"> L </button></td>
+            <td><button id="ñ" (click)="selectedLetter('ñ')"> Ñ </button></td>
+          </tr>
+
+          <tr>
+            <td><button id="z" (click)="selectedLetter('z')"> Z </button></td>
+            <td><button id="x" (click)="selectedLetter('x')"> X </button></td>
+            <td><button id="c" (click)="selectedLetter('c')"> C </button></td>
+            <td><button id="v" (click)="selectedLetter('v')"> V </button></td>
+            <td><button id="b" (click)="selectedLetter('b')"> B </button></td>
+            <td><button id="n" (click)="selectedLetter('n')"> N </button></td>
+            <td><button id="m" (click)="selectedLetter('m')"> M </button></td>
+          </tr>
+        </table>
+      </div>
+</div>
+
+<div class="wordspace">
+    <h1 class="word" *ngIf="currentWord.length > 0">{{currentWord}}</h1>
+    <!--h1 class="word" *ngIf="correctWord.length > 0">{{correctWord}}</h1-->
+    <h1>Error Count {{errorCount}}</h1>
+</div>
+
+            <!-- Win Modal -->
+            <div id="winModal" class="modal fade" role="dialog" [ngStyle]="{'display': winModalOpen ? 'block' : 'none', 'opacity': 1}">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">You Win!</h4>
+                        </div>
+                        <div class="modal-body">
+
+                        </div>
+                    <div class="modal-footer" align="right">
+                        <button type="button" id="btnClose" class="btn btn-danger" (click)="winModal(false)"><i class="fa fa-times fa-fw"></i>Close</button>
+                    </div>
+                    </div>
+            </div>
+        </div>
+        <!-- Win Modal -->
+
+        <!-- Lose Modal -->
+        <div id="loseModal" class="modal fade" role="dialog" [ngStyle]="{'display': loseModalOpen ? 'block' : 'none', 'opacity': 1}">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">You Lose!</h4>
+                    </div>
+                    <div class="modal-body">
+
+                    </div>
+                <div class="modal-footer" align="right">
+                    <button type="button" id="btnClose" class="btn btn-danger" (click)="loseModal(false)"><i class="fa fa-times fa-fw"></i>Close</button>
+                </div>
+                </div>
+            </div>
+        </div>
+        <!-- Lose Modal -->
+
+<div align="center">
+    <app-chat></app-chat>
+    <br>
+    <app-chat-logs></app-chat-logs>
+</div>

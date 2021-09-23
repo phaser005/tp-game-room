@@ -33,6 +33,10 @@ import { ChatComponent } from './components/chat/chat.component';
 import { ChatLogsComponent } from './components/chat-logs/chat-logs.component';
 import { SurveyComponent } from './pages/survey/survey.component';
 import { MyGameComponent } from './games/my-game/my-game.component';
+import { HangedComponent } from './games/hanged/hanged.component';
+import { HigherLowerComponent } from './games/higher-lower/higher-lower.component';
+import { TriviaComponent } from './games/trivia/trivia.component';
+import { LogOutComponent } from './components/log-out/log-out.component';
 
 
 const config = {
@@ -97,9 +101,13 @@ const notifierDefaultOptions: NotifierOptions = {
     RockPaperScissorsComponent,
     MemoryTestComponent,
     MyGameComponent,
+    HangedComponent,
+    HigherLowerComponent,
+    TriviaComponent,
     ChatComponent,
     ChatLogsComponent,
-    SurveyComponent
+    SurveyComponent,
+    LogOutComponent
   ],
   imports: [
     BrowserModule,

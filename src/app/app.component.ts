@@ -14,8 +14,10 @@ export class AppComponent {
   }
 
   LogInVerification(cookie:string):boolean{
-    this.userName = this.auth.getCookieValue("isLoggedInName");
-    return this.auth.SearchLogInCookie(cookie);
+    //this.userName = this.auth.getCookieValue("isLoggedInName");
+    this.userName = this.auth.getStorageValue("isLoggedInName")?.toString();
+    return this.auth.SearchLogInStorage("isLoggedIn");
+    //return this.auth.SearchLogInCookie(cookie);
   }
 
   LogOut(){

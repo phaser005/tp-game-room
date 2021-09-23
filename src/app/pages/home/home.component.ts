@@ -14,7 +14,8 @@ export class HomeComponent implements OnInit {
   }
 
   LogInVerification(cookie:string):boolean{
-    return this.auth.SearchLogInCookie(cookie);
+    //return this.auth.SearchLogInCookie(cookie);
+    return this.auth.SearchLogInStorage("isLoggedIn");
   }
 
 }

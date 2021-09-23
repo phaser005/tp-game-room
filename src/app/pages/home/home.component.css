@@ -92,3 +92,10 @@
     left: 70%;
     margin-left: 160px;
 }
+
+.album{
+    background-image:url("https://i.pinimg.com/originals/be/06/60/be0660cd5435af01c35e05a4c4b4a9c4.gif");
+    background-size: cover;
+    height: 100%;
+    
+}

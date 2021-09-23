@@ -28,7 +28,7 @@
       </form>
       <form class="d-flex" *ngIf="LogInVerification('isLoggedIn')">
         <a class="btn btn-outline-secondary" routerLink="/entry/user-profile" role="button">{{userName}}</a>
-        <a class="btn btn-outline-primary me-2" (click)="LogOut()" role="button">Log Out</a>
+        <a class="btn btn-outline-primary me-2" [routerLink]="['/log-out']" role="button">Log Out</a>
       </form>
     </div>
   </div>

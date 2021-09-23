@@ -54,8 +54,11 @@ export class AuthService {
                 console.log("New log has been writed to the database")
               ]);
             }
-            this.SaveLogInCookie(this.newUserLog.uid);
-            this.SaveNameCookie(email);
+            //this.SaveLogInCookie(this.newUserLog.uid);
+            //this.SaveNameCookie(email);
+            //STORAGE
+            this.SaveLogInStorage(this.newUserLog.uid);
+            this.SaveNameStorage(email);
             this.router.navigate(['/home']);
           } else {
             throw new Error;
@@ -69,9 +72,15 @@ export class AuthService {
   }
 
   LogOut(){
-    this.auth.signOut();
-    this.DeleteLogInCookie();
-    this.router.navigate(['/home']);
+    this.auth.signOut().then(e =>{
+      //this.DeleteLogInCookie();
+      this.DeleteLogInStorage();
+      this.router.navigate(['/home']);
+    }).catch(e=> {
+      alert("No se pudo desloguear");
+    });
+    
+    
   }
 
   async Register(email:string, password:string, name:string){
@@ -88,7 +97,7 @@ export class AuthService {
           this.addUserToFireStoreDatabase(this.newUser).then(()=>[
             console.log("User Registered")
           ]);
-          this.SaveLogInCookie(this.newUser.uid);
+          //this.SaveLogInCookie(this.newUser.uid);
           this.notification.showNotification('success','Registration Successful!');
         }
         
@@ -146,8 +155,16 @@ export class AuthService {
     document.cookie = "isLoggedIn="+uid;
   }
 
+  SaveLogInStorage(uid:string){
+    localStorage.setItem("isLoggedIn", uid);
+  }
+
   SaveNameCookie(name: string){
     document.cookie = "isLoggedInName="+name;
+  }
+
+  SaveNameStorage(name: string){
+    localStorage.setItem("isLoggedInName", name);
   }
 
   DeleteLogInCookie(){
@@ -155,8 +172,21 @@ export class AuthService {
     document.cookie = "isLoggedInName" + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
   }
 
+  DeleteLogInStorage(){
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("isLoggedInName");
+  }
+
   SearchLogInCookie(cookie:string):boolean{
     if(this.getCookie(cookie) === "isLoggedIn"){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  SearchLogInStorage(value:string):boolean{
+    if(localStorage.getItem(value)){
       return true;
     }else{
       return false;
@@ -195,6 +225,10 @@ export class AuthService {
       }
     }
     return "";
+  }
+
+  getStorageValue(value:string){
+    return localStorage.getItem(value);
   }
 
   sleep(ms: number) {
