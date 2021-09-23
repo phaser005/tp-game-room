@@ -28,13 +28,14 @@ export class ChatComponent implements OnInit {
       this.mensaje.usuario = res;
       this.mensaje.fecha = this.auth.GetCurrentDateAndTime();
       //console.log(this.mensaje);
+      (<HTMLInputElement> document.getElementById("chatSpace")).value = "";
       this.fireChat.create(this.mensaje).then(()=>{
         //console.log("se envio el mensaje Fire");
       });
       this.realChat.create(this.mensaje).then(()=>{
         //console.log("se envio el mensaje RealTime");
       });
-    })
+    });
   }
 
 }

@@ -112,9 +112,8 @@ export class AuthService {
   }
 
   GetUserId():string{
-    var value = "; " + document.cookie;
-    var parts = value.split("; " + 'isLoggedIn' + "=");
-    return parts[1];
+    var value = <string>localStorage.getItem("isLoggedIn");
+    return value
   }
 
   GetCurrentUserName(uid:string){
@@ -122,7 +121,7 @@ export class AuthService {
     return new Promise((resolve, rejected)=>{
       this.collectionReference.get().toPromise().then(function (querySnapshot){
         querySnapshot.forEach(function (doc){
-          //console.log(doc.id, " => ", doc.data());
+          console.log(doc.id, " => ", doc.data());
           if(doc.data().uid === uid){
             resolve(doc.data().displayName);
           }
