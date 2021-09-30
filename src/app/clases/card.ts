@@ -12,3 +12,9 @@ export class CardInfo{
     suit!:string;
     value!:string;
 }
+
+export class AnimeInfo{
+    tag_string_copyright!:string;
+    file_url!:string;
+    tag_string_character!:string;
+}

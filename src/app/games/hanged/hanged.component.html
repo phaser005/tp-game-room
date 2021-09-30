@@ -1,10 +1,11 @@
 <div class="options">
     <h4>Choose a category</h4>
-    <button (click)="gameStart('objects')" id="categoryObject">Objects</button>
-    <button (click)="gameStart('countries')" id="categoryCountries">Countries</button>
-    <button (click)="gameStart('animals')" id="categoryAnimals">Animals</button>
+    <button class="btn btn-primary" (click)="gameStart('objects')" id="categoryObject">Objects</button>
+    <button class="btn btn-primary" (click)="gameStart('countries')" id="categoryCountries">Countries</button>
+    <button class="btn btn-primary" (click)="gameStart('animals')" id="categoryAnimals">Animals</button>
 
-    <button (click)="disableAllLetters()">Disable</button>
+    <button class="btn btn-danger" (click)="resetScore()" id="resetScore">Reset Score</button>
+    <button type="button" class="btn btn-secondary" (click)="saveScore()" >Save Current Score</button>
 </div>
 
 
@@ -75,9 +76,16 @@
 </div>
 
 <div class="wordspace">
-    <h1 class="word" *ngIf="currentWord.length > 0">{{currentWord}}</h1>
+    <h3>Word Category:</h3> <h3 *ngIf="currentWord.length > 0"> {{currentCategory}}</h3>
+    <br>
+    <h1 class="word" *ngIf="currentWord.length > 0"> {{currentWord}}</h1>
     <!--h1 class="word" *ngIf="correctWord.length > 0">{{correctWord}}</h1-->
-    <h1>Error Count {{errorCount}}</h1>
+    <h5>Error Count: {{errorCount}}</h5>
+    <h5>Words Guessed Right: {{wordsGuessedRight}}</h5>
+    <h5>Words Guessed Wrong: {{wordsGuessedWrong}}</h5>
+    <h5>WinRatio: {{winRatio}}</h5>
+    <h5>LoseRatio: {{loseRatio}}</h5>
+    <h5>TimesPlayed: {{timesPlayed}}</h5>
 </div>
 
             <!-- Win Modal -->
@@ -103,7 +111,7 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">You Lose!</h4>
+                        <h4 class="modal-title">You Lose! The correct word was "{{displayCorrectWord}}"</h4>
                     </div>
                     <div class="modal-body">
 

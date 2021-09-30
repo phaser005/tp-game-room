@@ -14,5 +14,9 @@ export class MemoryTestApiService {
   public getFiveCards(){
     return this.httpClient.get("https://deckofcardsapi.com/api/deck/new/draw/?count=8");
   }
+
+  public getImage(number:number){
+    return this.httpClient.get("https://danbooru.donmai.us/posts/"+number+".json");
+  }
   
 }

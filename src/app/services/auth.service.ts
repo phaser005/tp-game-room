@@ -63,7 +63,7 @@ export class AuthService {
           } else {
             throw new Error;
           }
-        }catch (e) {
+        }catch (e:any) {
           this.notification.showNotification('error', e.message);
         }
       }
@@ -105,7 +105,7 @@ export class AuthService {
       } else {
         throw new Error;
       }
-    } catch (e) {
+    } catch (e:any) {
       this.notification.showNotification('error',e.message);
     }
     

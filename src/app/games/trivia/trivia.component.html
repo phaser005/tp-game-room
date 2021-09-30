@@ -1,4 +1,36 @@
-<p>trivia works!</p>
+<div align="center">
+    <h1 align="center" *ngIf="!gameStarted">CAN YOU GUESS THESE 10 CHARACTERS!?</h1>
+
+    <button type="button" *ngIf="!gameStarted" class="btn btn-primary" (click)="start()" id="+">START</button>
+</div>
+
+
+<div *ngIf="gameStarted" align="center">
+    <img src="{{questionDisplayImage[index]}}" width="300px" height="400px" id="displayImage">
+    <br>
+
+    <button type="button" class="btn btn-secondary" (click)="answer(questionOptions[0])" id="0">
+        {{questionOptions[0]}}
+    </button>
+    <br>
+
+    <button type="button" class="btn btn-secondary" (click)="answer(questionOptions[1])" id="1">
+        {{questionOptions[1]}}
+    </button>
+    <br>
+
+    <button type="button" class="btn btn-secondary" (click)="answer(questionOptions[2])" id="2">
+        {{questionOptions[2]}}
+    </button>
+    <br>
+    
+    <button type="button" class="btn btn-secondary" (click)="answer(questionOptions[3])" id="3">
+        {{questionOptions[3]}}
+    </button>
+</div>
+<br>
+
+
 <div align="center">
     <app-chat></app-chat>
     <br>

@@ -270,6 +270,7 @@ export class MyGameComponent implements OnInit {
     this.highScoreService.saveTilesScore(this.highScore);
 
     this.disableSaveScoreButton();
+    alert("Score Saved!");
     
   }
 

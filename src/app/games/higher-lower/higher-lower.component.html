@@ -1,4 +1,20 @@
-<p>higher-lower works!</p>
+
+
+<img src="{{cards[0]}}" id="leftCard">
+
+<img src="{{defaultCard}}" id="rightCard">
+
+<br>
+
+<button type="button" class="btn btn-primary" (click)="check('+')" id="+">Higher</button>
+<button type="button" class="btn btn-danger" (click)="check('-')" id="-">Lower</button>
+<button type="button" class="btn btn-secondary" (click)="check('=')" id="=">Equal</button>
+<button type="button" class="btn btn-warning" (click)="reset()" id="reset">Reset</button>
+
+<h4>Score: {{score}}</h4>
+
+<br>
+
 <div align="center">
     <app-chat></app-chat>
     <br>

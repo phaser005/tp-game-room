@@ -49,3 +49,36 @@ export class TilesHighScore {
 
 }
 
+//NEW GAMES
+
+export class HangmanScore {
+
+    userId!:string;
+    userName!:string;
+    wordsGuessedRight!:number;
+    wordsGuessedWrong!:number;
+    timesPlayed!:number;
+    winRatio!:number;
+    loseRatio!:number;
+    date!:string;
+
+}
+
+export class HigherLowerScore {
+
+    userId!:string;
+    userName!:string;
+    score!:number;
+    date!:string;
+
+}
+
+export class TriviaScore {
+
+    userId!:string;
+    userName!:string;
+    correct!:number;
+    incorrect!:number;
+    date!:string;
+
+}

@@ -1,0 +1,12 @@
+<div class="row" class="scroll">
+    <div *ngFor="let score of highscores">
+        <p>Name: {{score.userName}}</p>
+        <p>Words Guessed Right: {{score.wordsGuessedRight}}</p>
+        <p>Words Guessed Wrong: {{score.wordsGuessedWrong}}</p>
+        <p>Win Ratio: {{score.winRatio}}%</p>
+        <p>Lose Ratio: {{score.loseRatio}}%</p>
+        <p>Times Played: {{score.timesPlayed}}</p>
+        <p>Date: {{score.date}}</p>
+        <hr>
+    </div>
+</div>
