@@ -102,6 +102,7 @@ export class AuthService {
         }
         
         this.router.navigate(['/home']);
+        this.LogMeIn(email, password);
       } else {
         throw new Error;
       }
@@ -224,6 +225,18 @@ export class AuthService {
       }
     }
     return "";
+  }
+
+  getUserType(){
+    var userData: UserData[];
+    this.collectionReference.valueChanges().subscribe(users=>{
+      userData = users;
+      userData.forEach(element => {
+        if(element.uid === this.GetUserId()){
+          
+        }
+      });
+    })
   }
 
   getStorageValue(value:string){

@@ -20,6 +20,10 @@ export class AppComponent {
     //return this.auth.SearchLogInCookie(cookie);
   }
 
+  adminVerificaction(){
+    
+  }
+
   LogOut(){
     this.auth.LogOut();
   }

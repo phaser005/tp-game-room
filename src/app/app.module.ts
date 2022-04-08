@@ -37,6 +37,7 @@ import { HangedComponent } from './games/hanged/hanged.component';
 import { HigherLowerComponent } from './games/higher-lower/higher-lower.component';
 import { TriviaComponent } from './games/trivia/trivia.component';
 import { LogOutComponent } from './components/log-out/log-out.component';
+import { SurveyResultsComponent } from './pages/survey-results/survey-results.component';
 
 
 const config = {
@@ -107,7 +108,8 @@ const notifierDefaultOptions: NotifierOptions = {
     ChatComponent,
     ChatLogsComponent,
     SurveyComponent,
-    LogOutComponent
+    LogOutComponent,
+    SurveyResultsComponent
   ],
   imports: [
     BrowserModule,
